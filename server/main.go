@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"waysGallery/database"
 	"waysGallery/pkg/mysql"
 	"waysGallery/routes"
@@ -36,7 +37,6 @@ func main() {
 	var AllowedMethods = handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS", "PATCH", "DELETE"})
 	var AllowedOrigins = handlers.AllowedOrigins([]string{"*"})
 
-	var port = "5000"
-	fmt.Println("server running localhost:" + port)
-	http.ListenAndServe("localhost:"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
+	fmt.Println("server running localhost:" + os.Getenv("PORT"))
+	http.ListenAndServe("localhost:"+os.Getenv("PORT"), handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
