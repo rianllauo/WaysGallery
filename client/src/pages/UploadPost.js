@@ -75,6 +75,11 @@ const UploadPost = () => {
 
             const response = await API.post("/post", form, config);
 
+            setForm({
+                title: "",
+                description: "",
+                image: [],
+            });
             Swal.fire("Post Success");
             console.log(response);
         } catch (error) {
@@ -85,6 +90,8 @@ const UploadPost = () => {
     useEffect(() => {
         setForm({ ...form, image: urls });
     }, [urls]);
+
+    console.log(form);
 
     return (
         <div>
@@ -124,6 +131,7 @@ const UploadPost = () => {
                         <input
                             id="dropzone-file"
                             onChange={handleChangeImage}
+                            // value={form.image}
                             type="file"
                             className="hidden"
                         />
@@ -150,6 +158,7 @@ const UploadPost = () => {
                                 placeholder="Title"
                                 onChange={handleChange}
                                 required={true}
+                                value={form.title}
                             />
                         </div>
                         <div>
@@ -159,6 +168,7 @@ const UploadPost = () => {
                                 onChange={handleChange}
                                 required={true}
                                 rows={5}
+                                value={form.description}
                             />
                         </div>
 

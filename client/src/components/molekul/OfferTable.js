@@ -77,10 +77,10 @@ const OfferTable = () => {
                                             to={item.id}
                                             onClick={() => handleShow(item)}
                                         >
-                                            {item.title}
+                                            <span className="text-blue-500 underline">
+                                                {item.title}
+                                            </span>
                                         </Link>
-
-                                        <p>{item.id}</p>
                                     </Table.Cell>
 
                                     <Table.Cell>
@@ -164,7 +164,7 @@ const OfferTable = () => {
                     })}
                     {show && (
                         <ModalDetailProject
-                            id={dataOffer.id}
+                            data={dataOffer}
                             show={show}
                             handleClose={handleClose}
                         />

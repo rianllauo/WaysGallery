@@ -63,7 +63,7 @@ const Profile = () => {
 
                     <div className="py-16">
                         <h3 className="text-lg font-medium">My Works</h3>
-                        <div className="flex items-center gap-4 pt-6">
+                        <div className="grid grid-cols-3 items-center gap-4 pt-6">
                             {post?.map((item) => {
                                 return item.images
                                     ?.map((item) => {
